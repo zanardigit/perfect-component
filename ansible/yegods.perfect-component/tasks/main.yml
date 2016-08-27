@@ -8,3 +8,6 @@
 
 - name: Unzip component
   unarchive: src=sample-component.zip dest=/var/www/joomla/tmp/sample-component owner=vagrant group=www-data creates=/var/www/joomla/tmp/helloworld.xml
+
+- name: Copy deploy file
+  copy: src=deploy.sh dest=/usr/local/bin/deploy.sh mode=0755
