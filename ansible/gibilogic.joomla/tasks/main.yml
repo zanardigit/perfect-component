@@ -16,7 +16,7 @@
   mysql_db: name=joomla state=present
 
 - name: Add configuration file
-  copy: src=configuration.php dest=/var/www/joomla/configuration.php
+  copy: src=configuration.php dest=/var/www/joomla/configuration.php owner=vagrant group=www-data
 
 - name: Copy database dump
   copy: src=joomla.sql dest=/tmp/joomla.sql
