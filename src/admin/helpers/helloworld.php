@@ -26,13 +26,13 @@ abstract class HelloWorldHelper
 	 */
 	public static function addSubmenu($submenu) 
 	{
-		\JSubMenuHelper::addEntry(
+	    \JHtmlSidebar::addEntry(
 			\JText::_('COM_HELLOWORLD_SUBMENU_MESSAGES'),
 			'index.php?option=com_helloworld',
 			$submenu == 'messages'
 		);
 
-		\JSubMenuHelper::addEntry(
+        \JHtmlSidebar::addEntry(
 			\JText::_('COM_HELLOWORLD_SUBMENU_CATEGORIES'),
 			'index.php?option=com_categories&view=categories&extension=com_helloworld',
 			$submenu == 'categories'
@@ -62,7 +62,10 @@ abstract class HelloWorldHelper
 			$assetName = 'com_helloworld.message.'.(int) $messageId;
 		}
 
-		$actions = \JAccess::getActions('com_helloworld', 'component');
+		$actions = \JAccess::getActionsFromFile(
+            JPATH_ADMINISTRATOR . '/components/com_helloworld/access.xml',
+            "/access/section[@name='component']/"
+        );
 
 		foreach ($actions as $action) {
 			$result->set($action->name, \JFactory::getUser()->authorise($action->name, $assetName));

@@ -17,7 +17,7 @@ $document->addStyleDeclaration('.icon-helloworld {background-image: url(../media
 // Access check: is this user allowed to access the backend of this component?
 if (!\JFactory::getUser()->authorise('core.manage', 'com_helloworld'))
 {
-	return \JError::raiseWarning(404, \JText::_('JERROR_ALERTNOAUTHOR'));
+    throw new \Exception(\JText::_('JERROR_ALERTNOAUTHOR'), 404);
 }
 
 // require helper file

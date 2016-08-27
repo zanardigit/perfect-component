@@ -15,6 +15,10 @@ defined('_JEXEC') or die('Restricted Access');
 $listOrder     = $this->escape($this->filter_order);
 $listDirn      = $this->escape($this->filter_order_Dir);
 ?>
+<div id="j-sidebar-container" class="span2">
+	<?php echo \JHtmlSidebar::render(); ?>
+</div>
+<div id="j-main-container" class="span10">
 <form action="index.php?option=com_helloworld&view=helloworlds" method="post" id="adminForm" name="adminForm">
 	<div class="row-fluid">
 		<div class="span6">
@@ -84,4 +88,4 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
 	<?php echo \JHtml::_('form.token'); ?>
 </form>
-
+</div>
