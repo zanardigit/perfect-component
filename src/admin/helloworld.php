@@ -10,12 +10,15 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+// This makes all the rest of the code much more reusable
+define('EXTENSION_ELEMENT', 'com_helloworld');
+
 // Set some global property
 $document = \JFactory::getDocument();
-$document->addStyleDeclaration('.icon-helloworld {background-image: url(../media/com_helloworld/images/tux-16x16.png);}');
+$document->addStyleDeclaration('.icon-helloworld {background-image: url(../media/' . EXTENSION_ELEMENT . '/images/tux-16x16.png);}');
 
 // Access check: is this user allowed to access the backend of this component?
-if (!\JFactory::getUser()->authorise('core.manage', 'com_helloworld'))
+if (!\JFactory::getUser()->authorise('core.manage', EXTENSION_ELEMENT))
 {
     throw new \Exception(\JText::_('JERROR_ALERTNOAUTHOR'), 404);
 }

@@ -88,7 +88,7 @@ class HelloWorldTableHelloWorld extends \JTable
 	protected function _getAssetName()
 	{
 		$k = $this->_tbl_key;
-		return 'com_helloworld.message.'.(int) $this->$k;
+		return EXTENSION_ELEMENT . '.message.' . (int) $this->$k;
 	}
 	/**
 	 * Method to return the title to use for the asset table.
@@ -116,12 +116,12 @@ class HelloWorldTableHelloWorld extends \JTable
 		if (($this->catid)&& !empty($this->catid))
 		{
 			// The item has a category as asset-parent
-			$assetParent->loadByName('com_helloworld.category.' . (int) $this->catid);
+			$assetParent->loadByName(EXTENSION_ELEMENT . '.category.' . (int) $this->catid);
 		}
 		else
 		{
 			// The item has the component as asset-parent
-			$assetParent->loadByName('com_helloworld');
+			$assetParent->loadByName(EXTENSION_ELEMENT);
 		}
 
 		// Return the found asset-parent-id

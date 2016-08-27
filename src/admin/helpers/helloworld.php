@@ -22,7 +22,7 @@ defined('_JEXEC') or die('Restricted access');
 abstract class HelloWorldHelper
 {
 	/**
-	 * Configure the Linkbar.
+	 * Configure the Linkbar. This is used by com_categories so we cannot use our constant
 	 */
 	public static function addSubmenu($submenu) 
 	{
@@ -56,15 +56,15 @@ abstract class HelloWorldHelper
 		$result	= new \JObject;
 
 		if (empty($messageId)) {
-			$assetName = 'com_helloworld';
+			$assetName = EXTENSION_ELEMENT;
 		}
 		else {
-			$assetName = 'com_helloworld.message.'.(int) $messageId;
+			$assetName = EXTENSION_ELEMENT  . '.message.' . (int) $messageId;
 		}
 
 		$actions = \JAccess::getActionsFromFile(
-            JPATH_ADMINISTRATOR . '/components/com_helloworld/access.xml',
-            "/access/section[@name='component']/"
+			JPATH_ADMINISTRATOR . '/components/' . EXTENSION_ELEMENT . '/access.xml',
+			"/access/section[@name='component']/"
         );
 
 		foreach ($actions as $action) {

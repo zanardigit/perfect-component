@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 \JHtml::_('behavior.formvalidation');
 ?>
-<form action="<?php echo \JRoute::_('index.php?option=com_helloworld&layout=edit&id=' . (int) $this->item->id); ?>"
+<form action="<?php echo \JRoute::_('index.php?option=' . EXTENSION_ELEMENT . '&layout=edit&id=' . (int) $this->item->id); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
 	<div class="form-horizontal">
 		<?php foreach ($this->form->getFieldsets() as $name => $fieldset): ?>

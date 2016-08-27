@@ -47,7 +47,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	{
 		// Get the form.
 		$form = $this->loadForm(
-			'com_helloworld.helloworld',
+            EXTENSION_ELEMENT . '.helloworld',
 			'helloworld',
 			array(
 				'control' => 'jform',
@@ -69,7 +69,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	 */
 	public function getScript() 
 	{
-		return 'administrator/components/com_helloworld/models/forms/helloworld.js';
+		return 'administrator/components/' . EXTENSION_ELEMENT . '/models/forms/helloworld.js';
 	}
 	/**
 	 * Method to get the data that should be injected in the form.
@@ -82,7 +82,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	{
 		// Check the session for previously entered form data.
 		$data = \JFactory::getApplication()->getUserState(
-			'com_helloworld.edit.helloworld.data',
+            EXTENSION_ELEMENT . '.edit.helloworld.data',
 			array()
 		);
 
@@ -100,7 +100,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	{
 		if( !empty( $record->id ) )
 		{
-			return \JFactory::getUser()->authorise( "core.delete", "com_helloworld.message." . $record->id );
+			return \JFactory::getUser()->authorise( "core.delete", EXTENSION_ELEMENT . ".message." . $record->id );
 		}
 	}
 }

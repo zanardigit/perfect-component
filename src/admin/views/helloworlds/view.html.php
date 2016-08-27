@@ -94,7 +94,7 @@ class HelloWorldViewHelloWorlds extends \JViewLegacy
 		if ($this->canDo->get('core.admin')) 
 		{
 			\JToolbarHelper::divider();
-			\JToolbarHelper::preferences('com_helloworld');
+			\JToolbarHelper::preferences(EXTENSION_ELEMENT);
 		}
 	}
 	/**

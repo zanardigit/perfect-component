@@ -122,8 +122,7 @@ class HelloWorldViewHelloWorld extends \JViewLegacy
 		$document->setTitle($isNew ? \JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING')
 		                           : \JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
 		$document->addScript(\JUri::root() . $this->script);
-		$document->addScript(\JUri::root() . "/administrator/components/com_helloworld"
-		                                  . "/views/helloworld/submitbutton.js");
+		$document->addScript(\JUri::root() . "/administrator/components/" . EXTENSION_ELEMENT . "/views/helloworld/submitbutton.js");
 		\JText::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
 	}
 }

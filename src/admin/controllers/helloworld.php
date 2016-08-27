@@ -44,7 +44,7 @@ class HelloWorldControllerHelloWorld extends \JControllerForm
 		$id = isset( $data[ $key ] ) ? $data[ $key ] : 0;
 		if( !empty( $id ) )
 		{
-			return \JFactory::getUser()->authorise( "core.edit", "com_helloworld.message." . $id );
+			return \JFactory::getUser()->authorise( "core.edit", EXTENSION_ELEMENT . ".message." . $id );
 		}
 	}
 }

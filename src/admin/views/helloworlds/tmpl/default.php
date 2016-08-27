@@ -19,7 +19,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 	<?php echo \JHtmlSidebar::render(); ?>
 </div>
 <div id="j-main-container" class="span10">
-<form action="index.php?option=com_helloworld&view=helloworlds" method="post" id="adminForm" name="adminForm">
+<form action="index.php?option=<?= EXTENSION_ELEMENT ?>&view=helloworlds" method="post" id="adminForm" name="adminForm">
 	<div class="row-fluid">
 		<div class="span6">
 			<?php echo \JText::_('COM_HELLOWORLD_HELLOWORLDS_FILTER'); ?>
@@ -59,7 +59,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) :
-					$link = \JRoute::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . $row->id);
+					$link = \JRoute::_('index.php?option=' . EXTENSION_ELEMENT . '&task=helloworld.edit&id=' . $row->id);
 				?>
 					<tr>
 						<td><?php echo $this->pagination->getRowOffset($i); ?></td>
