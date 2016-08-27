@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorlds extends JViewLegacy
+class HelloWorldViewHelloWorlds extends \JViewLegacy
 {
 	/**
 	 * Display the Hello World view
@@ -28,7 +28,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 	{
 		
 		// Get application
-		$app = JFactory::getApplication();
+		$app = \JFactory::getApplication();
 		$context = "helloworld.list.admin.helloworld";
 		// Get data from the model
 		$this->items		= $this->get('Items');
@@ -45,7 +45,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode('<br />', $errors));
+			\JError::raiseError(500, implode('<br />', $errors));
 
 			return false;
 		}
@@ -72,31 +72,31 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$title = JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLDS');
+		$title = \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLDS');
 
 		if ($this->pagination->total)
 		{
 			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
 		}
 
-		JToolBarHelper::title($title, 'helloworld');
+		\JToolbarHelper::title($title, 'helloworld');
 
 		if ($this->canDo->get('core.create')) 
 		{
-			JToolBarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
+			\JToolbarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
 		}
 		if ($this->canDo->get('core.edit')) 
 		{
-			JToolBarHelper::editList('helloworld.edit', 'JTOOLBAR_EDIT');
+			\JToolbarHelper::editList('helloworld.edit', 'JTOOLBAR_EDIT');
 		}
 		if ($this->canDo->get('core.delete')) 
 		{
-			JToolBarHelper::deleteList('', 'helloworlds.delete', 'JTOOLBAR_DELETE');
+			\JToolbarHelper::deleteList('', 'helloworlds.delete', 'JTOOLBAR_DELETE');
 		}
 		if ($this->canDo->get('core.admin')) 
 		{
-			JToolBarHelper::divider();
-			JToolBarHelper::preferences('com_helloworld');
+			\JToolbarHelper::divider();
+			\JToolbarHelper::preferences('com_helloworld');
 		}
 	}
 	/**
@@ -106,7 +106,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 	 */
 	protected function setDocument() 
 	{
-		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_HELLOWORLD_ADMINISTRATION'));
+		$document = \JFactory::getDocument();
+		$document->setTitle(\JText::_('COM_HELLOWORLD_ADMINISTRATION'));
 	}
 }

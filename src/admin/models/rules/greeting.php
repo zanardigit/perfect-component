@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleGreeting extends JFormRule
+class JFormRuleGreeting extends \JFormRule
 {
 	/**
 	 * The regular expression.

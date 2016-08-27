@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorld extends JViewLegacy
+class HelloWorldViewHelloWorld extends \JViewLegacy
 {
 	protected $form;
 	protected $item;
@@ -42,7 +42,7 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode('<br />', $errors));
+			\JError::raiseError(500, implode('<br />', $errors));
 
 			return false;
 		}
@@ -66,50 +66,50 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$input = JFactory::getApplication()->input;
+		$input = \JFactory::getApplication()->input;
 
 		// Hide Joomla Administrator Main menu
 		$input->set('hidemainmenu', true);
 
 		$isNew = ($this->item->id == 0);
 
-		JToolBarHelper::title($isNew ? JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_NEW')
-		                             : JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_EDIT'), 'helloworld');
+		\JToolbarHelper::title($isNew ? \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_NEW')
+		                             : \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_EDIT'), 'helloworld');
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{
 			// For new records, check the create permission.
 			if ($this->canDo->get('core.create')) 
 			{
-				JToolBarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
-				JToolBarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
-				JToolBarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
+				\JToolbarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
+				\JToolbarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
+				\JToolbarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
 				                       'JTOOLBAR_SAVE_AND_NEW', false);
 			}
-			JToolBarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CANCEL');
+			\JToolbarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CANCEL');
 		}
 		else
 		{
 			if ($this->canDo->get('core.edit'))
 			{
 				// We can save the new record
-				JToolBarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
-				JToolBarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
+				\JToolbarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
+				\JToolbarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
  
 				// We can save this record, but check the create permission to see
 				// if we can return to make a new one.
 				if ($this->canDo->get('core.create')) 
 				{
-					JToolBarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
+					\JToolbarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
 					                       'JTOOLBAR_SAVE_AND_NEW', false);
 				}
 			}
 			if ($this->canDo->get('core.create')) 
 			{
-				JToolBarHelper::custom('helloworld.save2copy', 'save-copy.png', 'save-copy_f2.png',
+				\JToolbarHelper::custom('helloworld.save2copy', 'save-copy.png', 'save-copy_f2.png',
 				                       'JTOOLBAR_SAVE_AS_COPY', false);
 			}
-			JToolBarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CLOSE');
+			\JToolbarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CLOSE');
 		}
 	}
 	/**
@@ -120,12 +120,12 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 	protected function setDocument() 
 	{
 		$isNew = ($this->item->id == 0);
-		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING')
-		                           : JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
-		$document->addScript(JURI::root() . $this->script);
-		$document->addScript(JURI::root() . "/administrator/components/com_helloworld"
+		$document = \JFactory::getDocument();
+		$document->setTitle($isNew ? \JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING')
+		                           : \JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
+		$document->addScript(\JUri::root() . $this->script);
+		$document->addScript(\JUri::root() . "/administrator/components/com_helloworld"
 		                                  . "/views/helloworld/submitbutton.js");
-		JText::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
+		\JText::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
 	}
 }

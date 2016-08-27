@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldTableHelloWorld extends JTable
+class HelloWorldTableHelloWorld extends \JTable
 {
 	/**
 	 * Constructor
@@ -30,7 +30,7 @@ class HelloWorldTableHelloWorld extends JTable
 	 *
 	 * @param       array           named array
 	 * @return      null|string     null is operation was satisfactory, otherwise returns an error
-	 * @see JTable:bind
+	 * @see \JTable:bind
 	 * @since 1.5
 	 */
 	public function bind($array, $ignore = '')
@@ -38,7 +38,7 @@ class HelloWorldTableHelloWorld extends JTable
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			// Convert the params field to a string.
-			$parameter = new JRegistry;
+			$parameter = new \JRegistry;
 			$parameter->loadArray($array['params']);
 			$array['params'] = (string)$parameter;
 		}
@@ -46,7 +46,7 @@ class HelloWorldTableHelloWorld extends JTable
 		// Bind the rules.
 		if (isset($array['rules']) && is_array($array['rules']))
 		{
-			$rules = new JAccessRules($array['rules']);
+			$rules = new \JAccessRules($array['rules']);
 			$this->setRules($rules);
 		}
 
@@ -59,14 +59,14 @@ class HelloWorldTableHelloWorld extends JTable
 	 * @param       int $pk primary key
 	 * @param       boolean $reset reset data
 	 * @return      boolean
-	 * @see JTable:load
+	 * @see \JTable:load
 	 */
 	public function load($pk = null, $reset = true)
 	{
 		if (parent::load($pk, $reset))
 		{
 			// Convert the params field to a registry.
-			$params = new JRegistry;
+			$params = new \JRegistry;
 			$params->loadString($this->params, 'JSON');
 
 			$this->params = $params;
@@ -105,10 +105,10 @@ class HelloWorldTableHelloWorld extends JTable
 	 *
 	 * @return	int
 	 */
-	protected function _getAssetParentId(JTable $table = NULL, $id = NULL)
+	protected function _getAssetParentId(\JTable $table = NULL, $id = NULL)
 	{
 		// We will retrieve the parent-asset from the Asset-table
-		$assetParent = JTable::getInstance('Asset');
+		$assetParent = \JTable::getInstance('Asset');
 		// Default: if no asset-parent can be found we take the global asset
 		$assetParentId = $assetParent->getRootId();
 

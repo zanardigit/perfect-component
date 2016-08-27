@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorld extends JModelAdmin
+class HelloWorldModelHelloWorld extends \JModelAdmin
 {
 	/**
 	 * Method to get a table object, load it if necessary.
@@ -24,13 +24,13 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	 * @param   string  $prefix  The class prefix. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A JTable object
+	 * @return  \JTable  A \JTable object
 	 *
 	 * @since   1.6
 	 */
 	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return \JTable::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState(
+		$data = \JFactory::getApplication()->getUserState(
 			'com_helloworld.edit.helloworld.data',
 			array()
 		);
@@ -94,13 +94,13 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		return $data;
 	}
 	/**
-	 * Method to check if it's OK to delete a message. Overwrites JModelAdmin::canDelete
+	 * Method to check if it's OK to delete a message. Overwrites \JModelAdmin::canDelete
 	 */
 	protected function canDelete($record)
 	{
 		if( !empty( $record->id ) )
 		{
-			return JFactory::getUser()->authorise( "core.delete", "com_helloworld.message." . $record->id );
+			return \JFactory::getUser()->authorise( "core.delete", "com_helloworld.message." . $record->id );
 		}
 	}
 }

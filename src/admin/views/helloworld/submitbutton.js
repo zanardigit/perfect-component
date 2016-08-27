@@ -28,7 +28,7 @@ Joomla.submitbutton = function(task)
 		}
 		else
 		{
-			alert(Joomla.JText._('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE',
+			alert(Joomla.\JText._('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE',
 			                     'Some values are unacceptable'));
 			return false;
 		}

@@ -17,7 +17,7 @@ JFormHelper::loadFieldClass('list');
  *
  * @since  0.0.1
  */
-class JFormFieldHelloWorld extends JFormFieldList
+class JFormFieldHelloWorld extends \JFormFieldList
 {
 	/**
 	 * The field type.
@@ -29,11 +29,11 @@ class JFormFieldHelloWorld extends JFormFieldList
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return  array  An array of JHtml options.
+	 * @return  array  An array of \JHtml options.
 	 */
 	protected function getOptions()
 	{
-		$db    = JFactory::getDBO();
+		$db    = \JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('#__helloworld.id as id,greeting,#__categories.title as category,catid');
 		$query->from('#__helloworld');
@@ -48,7 +48,7 @@ class JFormFieldHelloWorld extends JFormFieldList
 		{
 			foreach ($messages as $message)
 			{
-				$options[] = JHtml::_('select.option', $message->id, $message->greeting .
+				$options[] = \JHtml::_('select.option', $message->id, $message->greeting .
 				                      ($message->catid ? ' (' . $message->category . ')' : ''));
 			}
 		}

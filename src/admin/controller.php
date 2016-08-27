@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  com_helloworld
  * @since       0.0.7
  */
-class HelloWorldController extends JControllerLegacy
+class HelloWorldController extends \JControllerLegacy
 {
 	/**
 	 * The default view for the display method.

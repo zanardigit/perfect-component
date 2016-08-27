@@ -37,12 +37,12 @@ class HelloWorldModelHelloWorld extends JModelItem
 	protected function populateState()
 	{
 		// Get the message id
-		$jinput = JFactory::getApplication()->input;
+		$jinput = \JFactory::getApplication()->input;
 		$id     = $jinput->get('id', 1, 'INT');
 		$this->setState('message.id', $id);
 
 		// Load the parameters.
-		$this->setState('params', JFactory::getApplication()->getParams());
+		$this->setState('params', \JFactory::getApplication()->getParams());
 		parent::populateState();
 	}
 
@@ -53,13 +53,13 @@ class HelloWorldModelHelloWorld extends JModelItem
 	 * @param   string  $prefix  The class prefix. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A JTable object
+	 * @return  \JTable  A \JTable object
 	 *
 	 * @since   1.6
 	 */
 	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return \JTable::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -71,7 +71,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 		if (!isset($this->item)) 
 		{
 			$id    = $this->getState('message.id');
-			$db    = JFactory::getDbo();
+			$db    = \JFactory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('h.greeting, h.params, c.title as category')
 				  ->from('#__helloworld as h')
@@ -82,7 +82,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 			if ($this->item = $db->loadObject()) 
 			{
 				// Load the JSON string
-				$params = new JRegistry;
+				$params = new \JRegistry;
 				$params->loadString($this->item->params, 'JSON');
 				$this->item->params = $params;
 

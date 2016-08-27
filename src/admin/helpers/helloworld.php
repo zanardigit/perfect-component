@@ -26,25 +26,25 @@ abstract class HelloWorldHelper
 	 */
 	public static function addSubmenu($submenu) 
 	{
-		JSubMenuHelper::addEntry(
-			JText::_('COM_HELLOWORLD_SUBMENU_MESSAGES'),
+		\JSubMenuHelper::addEntry(
+			\JText::_('COM_HELLOWORLD_SUBMENU_MESSAGES'),
 			'index.php?option=com_helloworld',
 			$submenu == 'messages'
 		);
 
-		JSubMenuHelper::addEntry(
-			JText::_('COM_HELLOWORLD_SUBMENU_CATEGORIES'),
+		\JSubMenuHelper::addEntry(
+			\JText::_('COM_HELLOWORLD_SUBMENU_CATEGORIES'),
 			'index.php?option=com_categories&view=categories&extension=com_helloworld',
 			$submenu == 'categories'
 		);
 
 		// set some global property
-		$document = JFactory::getDocument();
+		$document = \JFactory::getDocument();
 		$document->addStyleDeclaration('.icon-48-helloworld ' .
 		                               '{background-image: url(../media/com_helloworld/images/tux-48x48.png);}');
 		if ($submenu == 'categories') 
 		{
-			$document->setTitle(JText::_('COM_HELLOWORLD_ADMINISTRATION_CATEGORIES'));
+			$document->setTitle(\JText::_('COM_HELLOWORLD_ADMINISTRATION_CATEGORIES'));
 		}
 	}
 
@@ -53,7 +53,7 @@ abstract class HelloWorldHelper
 	 */
 	public static function getActions($messageId = 0)
 	{	
-		$result	= new JObject;
+		$result	= new \JObject;
 
 		if (empty($messageId)) {
 			$assetName = 'com_helloworld';
@@ -62,10 +62,10 @@ abstract class HelloWorldHelper
 			$assetName = 'com_helloworld.message.'.(int) $messageId;
 		}
 
-		$actions = JAccess::getActions('com_helloworld', 'component');
+		$actions = \JAccess::getActions('com_helloworld', 'component');
 
 		foreach ($actions as $action) {
-			$result->set($action->name, JFactory::getUser()->authorise($action->name, $assetName));
+			$result->set($action->name, \JFactory::getUser()->authorise($action->name, $assetName));
 		}
 
 		return $result;

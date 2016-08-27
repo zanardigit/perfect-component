@@ -16,13 +16,13 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  com_helloworld
  * @since       0.0.9
  */
-class HelloWorldControllerHelloWorld extends JControllerForm
+class HelloWorldControllerHelloWorld extends \JControllerForm
 {
 	/**
 	* Implement to allowAdd or not
 	*
 	* Not used at this time (but you can look at how other components use it....)
-	* Overwrites: JControllerForm::allowAdd
+	* Overwrites: \JControllerForm::allowAdd
 	*
 	* @param array $data
 	* @return bool
@@ -33,7 +33,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	}
 	/**
 	* Implement to allow edit or not
-	* Overwrites: JControllerForm::allowEdit
+	* Overwrites: \JControllerForm::allowEdit
 	*
 	* @param array $data
 	* @param string $key
@@ -44,7 +44,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		$id = isset( $data[ $key ] ) ? $data[ $key ] : 0;
 		if( !empty( $id ) )
 		{
-			return JFactory::getUser()->authorise( "core.edit", "com_helloworld.message." . $id );
+			return \JFactory::getUser()->authorise( "core.edit", "com_helloworld.message." . $id );
 		}
 	}
 }

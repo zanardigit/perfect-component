@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorlds extends JModelList
+class HelloWorldModelHelloWorlds extends \JModelList
 {
 	/**
 	 * Constructor.
@@ -46,7 +46,7 @@ class HelloWorldModelHelloWorlds extends JModelList
 	protected function getListQuery()
 	{
 		// Initialize variables.
-		$db    = JFactory::getDbo();
+		$db    = \JFactory::getDbo();
 		$query = $db->getQuery(true);
 
 		// Create the base select statement.
