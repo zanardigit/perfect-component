@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  roles:
+      - gibilogic.core
+      - gibilogic.lamp
+      - gibilogic.joomla
+      - yegods.perfect-component

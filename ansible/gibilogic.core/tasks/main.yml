@@ -1,0 +1,26 @@
+---
+# @version		tasks/main.yml 2016-06-19 09:55:00 UTC
+# @package		gibilogic.core
+# @description	This performs basic installation tasks on the system
+
+- name: Can we connect?
+  ping:
+
+- name: Upgrade packages
+  apt: update_cache=yes upgrade=yes
+
+- name: Install packages
+  apt: name={{item}} state=installed
+  with_items:
+    - zip
+    - git
+    - nfs-kernel-server
+
+- name: Generate locale
+  command: "{{ item }}"
+  with_items:
+    - locale-gen it_IT.UTF-8
+    - dpkg-reconfigure locales
+
+- name: Remove unused packages
+  command: apt-get autoremove -y

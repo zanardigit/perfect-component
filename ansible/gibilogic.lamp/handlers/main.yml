@@ -1,0 +1,10 @@
+---
+# @version		handlers/main.yml 2016-07-07 12:26:00 UTC
+# @package		gibilogic.lamp
+# @description	handlers for gibilogic.lamp
+
+- name: restart apache
+  service: name=apache2 state=restarted
+
+- name: restart mysql
+  service: name="mysql" state=restarted

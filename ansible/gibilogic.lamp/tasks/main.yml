@@ -1,0 +1,62 @@
+---
+# @version		tasks/main.yml 2016-06-27 09:02:00 UTC
+# @package		gibilogic.lamp
+# @description	Install and configure the LAMP stack
+
+- name: Install packages
+  apt: name={{item}} state=installed update_cache=yes
+  with_items:
+      - apache2
+      - php5
+      - php5-cli
+      - php5-curl
+      - php5-gd
+      - php5-intl
+      - php5-json
+      - php5-mcrypt
+      - php5-mysql
+      - php5-xdebug
+      - php-pear
+      - phpunit
+      - mysql-server-5.5
+      #required by Ansible itself
+      - python-mysqldb
+  notify:
+      - restart apache
+
+- name: Enable modules
+  apache2_module: state=present name={{item}}
+  with_items:
+      - rewrite
+      - php5
+      - ssl
+  notify:
+      - restart apache
+
+- name: Change Apache2 user
+  command: sudo sed -i s/APACHE_RUN_USER=www-data/APACHE_RUN_USER=vagrant/ /etc/apache2/envvars
+  notify:
+      - restart apache
+
+- name: Start the MySQL service
+  service: name=mysql state=started enabled=true
+
+- debconf: name=phpmyadmin question='phpmyadmin/dbconfig-install' value='true' vtype='boolean'
+- debconf: name=phpmyadmin question='phpmyadmin/app-password-confirm' value='' vtype='password'
+- debconf: name=phpmyadmin question='phpmyadmin/mysql/admin-pass' value='' vtype='password'
+- debconf: name=phpmyadmin question='phpmyadmin/mysql/app-pass' value='' vtype='password'
+- debconf: name=phpmyadmin question='phpmyadmin/reconfigure-webserver' value='apache2' vtype='multiselect'
+
+- name: Install phpmyadmin
+  apt: pkg=phpmyadmin state=present
+  notify:
+      - restart mysql
+
+- name: Config phpmyadmin
+  copy: src=nopass.conf.php dest=/etc/phpmyadmin/conf.d/nopass.conf.php
+
+- name: Create default database
+  mysql_db: name=vagrant state=present
+
+- name: Set permissions
+  file: path=/var/www owner=vagrant recurse=yes state=directory

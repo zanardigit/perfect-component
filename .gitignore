@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+.project
+.settings
+.vagrant
+
+build/build.properties
+release/*
+
+!*.gitkeep
+

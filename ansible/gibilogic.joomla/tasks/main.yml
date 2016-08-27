@@ -1,0 +1,30 @@
+---
+# @version		tasks/main.yml 2016-05-13 15:24:00 UTC
+# @package		gibilogic.joomla
+# @description	Install and configure Joomla
+
+- name: Create Virtualhost
+  copy: src=joomla.conf dest=/etc/apache2/sites-enabled/000-default.conf
+
+- name: Create destination folder
+  file: path=/var/www/joomla state=directory
+
+- name: Unzip Joomla
+  unarchive: src=joomla.zip dest=/var/www/joomla/ owner=vagrant group=www-data creates=/var/www/joomla/joomla.xml
+
+- name: Create database
+  mysql_db: name=joomla state=present
+
+- name: Add configuration file
+  copy: src=configuration.php dest=/var/www/joomla/configuration.php
+
+- name: Copy database dump
+  copy: src=joomla.sql dest=/tmp/joomla.sql
+
+- name: Import database data
+  mysql_db: name=joomla state=import target=/tmp/joomla.sql
+
+- name: Remove installation folder
+  file: path=/var/www/joomla/installation state=absent
+  notify:
+      - restart apache
