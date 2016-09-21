@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldControllerHelloWorlds extends \JControllerAdmin
+class HelloWorldControllerMessages extends \JControllerAdmin
 {
 	/**
 	 * Proxy for getModel.
@@ -27,7 +27,7 @@ class HelloWorldControllerHelloWorlds extends \JControllerAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getModel($name = 'HelloWorld', $prefix = 'HelloWorldModel', $config = array('ignore_request' => true))
+	public function getModel($name = 'Message', $prefix = 'HelloWorldModel', $config = array('ignore_request' => true))
 	{
 		$model = parent::getModel($name, $prefix, $config);
 

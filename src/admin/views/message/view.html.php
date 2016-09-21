@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorld extends \JViewLegacy
+class HelloWorldViewMessage extends \JViewLegacy
 {
 	protected $form;
 	protected $item;
@@ -23,7 +23,7 @@ class HelloWorldViewHelloWorld extends \JViewLegacy
 	protected $canDo;
 
 	/**
-	 * Display the Hello World view
+	 * Display the Message view
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
@@ -71,43 +71,43 @@ class HelloWorldViewHelloWorld extends \JViewLegacy
 
 		$isNew = ($this->item->id == 0);
 
-		\JToolbarHelper::title($isNew ? \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_NEW')
-		                             : \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLD_EDIT'), 'helloworld');
+		\JToolbarHelper::title($isNew ? \JText::_('COM_HELLOWORLD_MANAGER_MESSAGE_NEW')
+		                             : \JText::_('COM_HELLOWORLD_MANAGER_MESSAGE_EDIT'), 'helloworld');
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{
 			// For new records, check the create permission.
 			if ($this->canDo->get('core.create')) 
 			{
-				\JToolbarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
-				\JToolbarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
-				\JToolbarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
+				\JToolbarHelper::apply('message.apply', 'JTOOLBAR_APPLY');
+				\JToolbarHelper::save('message.save', 'JTOOLBAR_SAVE');
+				\JToolbarHelper::custom('message.save2new', 'save-new.png', 'save-new_f2.png',
 				                       'JTOOLBAR_SAVE_AND_NEW', false);
 			}
-			\JToolbarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CANCEL');
+			\JToolbarHelper::cancel('message.cancel', 'JTOOLBAR_CANCEL');
 		}
 		else
 		{
 			if ($this->canDo->get('core.edit'))
 			{
 				// We can save the new record
-				\JToolbarHelper::apply('helloworld.apply', 'JTOOLBAR_APPLY');
-				\JToolbarHelper::save('helloworld.save', 'JTOOLBAR_SAVE');
+				\JToolbarHelper::apply('message.apply', 'JTOOLBAR_APPLY');
+				\JToolbarHelper::save('message.save', 'JTOOLBAR_SAVE');
  
 				// We can save this record, but check the create permission to see
 				// if we can return to make a new one.
 				if ($this->canDo->get('core.create')) 
 				{
-					\JToolbarHelper::custom('helloworld.save2new', 'save-new.png', 'save-new_f2.png',
+					\JToolbarHelper::custom('message.save2new', 'save-new.png', 'save-new_f2.png',
 					                       'JTOOLBAR_SAVE_AND_NEW', false);
 				}
 			}
 			if ($this->canDo->get('core.create')) 
 			{
-				\JToolbarHelper::custom('helloworld.save2copy', 'save-copy.png', 'save-copy_f2.png',
+				\JToolbarHelper::custom('message.save2copy', 'save-copy.png', 'save-copy_f2.png',
 				                       'JTOOLBAR_SAVE_AS_COPY', false);
 			}
-			\JToolbarHelper::cancel('helloworld.cancel', 'JTOOLBAR_CLOSE');
+			\JToolbarHelper::cancel('message.cancel', 'JTOOLBAR_CLOSE');
 		}
 	}
 	/**
@@ -119,10 +119,10 @@ class HelloWorldViewHelloWorld extends \JViewLegacy
 	{
 		$isNew = ($this->item->id == 0);
 		$document = \JFactory::getDocument();
-		$document->setTitle($isNew ? \JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING')
-		                           : \JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
+		$document->setTitle($isNew ? \JText::_('COM_HELLOWORLD_MESSAGE_CREATING')
+		                           : \JText::_('COM_HELLOWORLD_MESSAGE_EDITING'));
 		$document->addScript(\JUri::root() . $this->script);
 		$document->addScript(\JUri::root() . "/administrator/components/" . EXTENSION_ELEMENT . "/views/helloworld/submitbutton.js");
-		\JText::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
+		\JText::script('COM_HELLOWORLD_MESSAGE_ERROR_UNACCEPTABLE');
 	}
 }

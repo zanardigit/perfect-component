@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  com_helloworld
  * @since       0.0.9
  */
-class HelloWorldControllerHelloWorld extends \JControllerForm
+class HelloWorldControllerMessage extends \JControllerForm
 {
 	/**
 	* Implement to allowAdd or not

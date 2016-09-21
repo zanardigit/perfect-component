@@ -22,7 +22,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 <form action="index.php?option=<?= EXTENSION_ELEMENT ?>&view=helloworlds" method="post" id="adminForm" name="adminForm">
 	<div class="row-fluid">
 		<div class="span6">
-			<?php echo \JText::_('COM_HELLOWORLD_HELLOWORLDS_FILTER'); ?>
+			<?php echo \JText::_('COM_HELLOWORLD_MESSAGES_FILTER'); ?>
 			<?php
 				echo \JLayoutHelper::render(
 					'joomla.searchtools.default',
@@ -39,7 +39,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 				<?php echo \JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="90%">
-				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_HELLOWORLDS_NAME', 'greeting', $listDirn, $listOrder); ?>
+				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_MESSAGES_NAME', 'greeting', $listDirn, $listOrder); ?>
 			</th>
 			<th width="5%">
 				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_PUBLISHED', 'published', $listDirn, $listOrder); ?>
@@ -59,7 +59,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) :
-					$link = \JRoute::_('index.php?option=' . EXTENSION_ELEMENT . '&task=helloworld.edit&id=' . $row->id);
+					$link = \JRoute::_('index.php?option=' . EXTENSION_ELEMENT . '&task=message.edit&id=' . $row->id);
 				?>
 					<tr>
 						<td><?php echo $this->pagination->getRowOffset($i); ?></td>
@@ -72,7 +72,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 							</a>
 						</td>
 						<td align="center">
-							<?php echo \JHtml::_('jgrid.published', $row->published, $i, 'helloworlds.', true, 'cb'); ?>
+							<?php echo \JHtml::_('jgrid.published', $row->published, $i, 'messages.', true, 'cb'); ?>
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>

@@ -30,6 +30,6 @@ defined('_JEXEC') or die('Restricted access');
 			</fieldset>
 		<?php endforeach; ?>
 	</div>
-	<input type="hidden" name="task" value="helloworld.edit" />
+	<input type="hidden" name="task" value="message.edit" />
 	<?php echo \JHtml::_('form.token'); ?>
 </form>

@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorlds extends \JViewLegacy
+class HelloWorldViewMessages extends \JViewLegacy
 {
 	/**
 	 * Display the Hello World view
@@ -29,7 +29,7 @@ class HelloWorldViewHelloWorlds extends \JViewLegacy
 		
 		// Get application
 		$app = \JFactory::getApplication();
-		$context = "helloworld.list.admin.helloworld";
+		$context = "helloworld.list.admin.message";
 		// Get data from the model
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
@@ -49,7 +49,7 @@ class HelloWorldViewHelloWorlds extends \JViewLegacy
 		}
 
 		// Set the submenu
-		HelloWorldHelper::addSubmenu('helloworlds');
+		HelloWorldHelper::addSubmenu('messages');
 
 		// Set the toolbar and number of found items
 		$this->addToolBar();
@@ -70,26 +70,26 @@ class HelloWorldViewHelloWorlds extends \JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$title = \JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLDS');
+		$title = \JText::_('COM_HELLOWORLD_MANAGER_MESSAGES');
 
 		if ($this->pagination->total)
 		{
 			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
 		}
 
-		\JToolbarHelper::title($title, 'helloworld');
+		\JToolbarHelper::title($title, 'message');
 
 		if ($this->canDo->get('core.create')) 
 		{
-			\JToolbarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
+			\JToolbarHelper::addNew('message.add', 'JTOOLBAR_NEW');
 		}
 		if ($this->canDo->get('core.edit')) 
 		{
-			\JToolbarHelper::editList('helloworld.edit', 'JTOOLBAR_EDIT');
+			\JToolbarHelper::editList('message.edit', 'JTOOLBAR_EDIT');
 		}
 		if ($this->canDo->get('core.delete')) 
 		{
-			\JToolbarHelper::deleteList('', 'helloworlds.delete', 'JTOOLBAR_DELETE');
+			\JToolbarHelper::deleteList('', 'messages.delete', 'JTOOLBAR_DELETE');
 		}
 		if ($this->canDo->get('core.admin')) 
 		{

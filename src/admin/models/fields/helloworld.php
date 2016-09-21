@@ -35,8 +35,8 @@ class JFormFieldHelloWorld extends \JFormFieldList
 	{
 		$db    = \JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('#__helloworld.id as id,greeting,#__categories.title as category,catid');
-		$query->from('#__helloworld');
+		$query->select('#__helloworld_messages.id as id,greeting,#__categories.title as category,catid');
+		$query->from('#__helloworld_messages');
 		$query->leftJoin('#__categories on catid=#__categories.id');
 		// Retrieve only published items
 		$query->where('#__helloworld.published = 1');

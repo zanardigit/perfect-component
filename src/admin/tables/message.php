@@ -10,20 +10,20 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Hello Table class
+ * Message Table class
  *
  * @since  0.0.1
  */
-class HelloWorldTableHelloWorld extends \JTable
+class HelloWorldTableMessage extends \JTable
 {
 	/**
 	 * Constructor
 	 *
 	 * @param   JDatabaseDriver  &$db  A database connector object
 	 */
-	function __construct(&$db)
+	public function __construct(&$db)
 	{
-		parent::__construct('#__helloworld', 'id', $db);
+		parent::__construct('#__helloworld_messages', 'id', $db);
 	}
 	/**
 	 * Overloaded bind function

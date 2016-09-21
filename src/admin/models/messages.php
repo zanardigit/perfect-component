@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorlds extends \JModelList
+class HelloWorldModelMessages extends \JModelList
 {
 	/**
 	 * Constructor.
@@ -51,7 +51,7 @@ class HelloWorldModelHelloWorlds extends \JModelList
 
 		// Create the base select statement.
 		$query->select('*')
-			  ->from($db->quoteName('#__helloworld'));
+			  ->from($db->quoteName('#__helloworld_messages'));
 
 		// Filter: like / search
 		$search = $this->getState('filter.search');

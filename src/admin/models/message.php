@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorld extends \JModelAdmin
+class HelloWorldModelMessage extends \JModelAdmin
 {
 	/**
 	 * Method to get a table object, load it if necessary.
@@ -28,7 +28,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
+	public function getTable($type = 'Message', $prefix = 'HelloWorldTable', $config = array())
 	{
 		return \JTable::getInstance($type, $prefix, $config);
 	}
@@ -47,8 +47,8 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	{
 		// Get the form.
 		$form = $this->loadForm(
-            EXTENSION_ELEMENT . '.helloworld',
-			'helloworld',
+            EXTENSION_ELEMENT . '.message',
+			'message',
 			array(
 				'control' => 'jform',
 				'load_data' => $loadData
@@ -69,7 +69,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	 */
 	public function getScript() 
 	{
-		return 'administrator/components/' . EXTENSION_ELEMENT . '/models/forms/helloworld.js';
+		return 'administrator/components/' . EXTENSION_ELEMENT . '/models/forms/message.js';
 	}
 	/**
 	 * Method to get the data that should be injected in the form.
@@ -82,7 +82,7 @@ class HelloWorldModelHelloWorld extends \JModelAdmin
 	{
 		// Check the session for previously entered form data.
 		$data = \JFactory::getApplication()->getUserState(
-            EXTENSION_ELEMENT . '.edit.helloworld.data',
+            EXTENSION_ELEMENT . '.edit.message.data',
 			array()
 		);
 

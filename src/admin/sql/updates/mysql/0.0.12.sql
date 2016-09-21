@@ -1,1 +1,1 @@
-ALTER TABLE `#__helloworld` ADD `catid` int(11) NOT NULL DEFAULT '0';
+ALTER TABLE `#__helloworld_messages` ADD `catid` int(11) NOT NULL DEFAULT '0';
