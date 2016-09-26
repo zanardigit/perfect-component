@@ -14,6 +14,9 @@ defined('_JEXEC') or die('Restricted access');
 define('EXTENSION_ELEMENT', 'com_helloworld');
 define('EXTENSION_IDENTIFIER', 'helloworld');
 
+// Start logger
+JLog::addLogger(array("text_file" => EXTENSION_IDENTIFIER . ".log.php"), JLog::ALL, EXTENSION_IDENTIFIER);
+
 // From now on, you don't usually have to require class files
 require_once __DIR__ . '/autoloader.php';
 

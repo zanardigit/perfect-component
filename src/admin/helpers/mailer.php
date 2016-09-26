@@ -21,6 +21,8 @@ class HelloWorldHelperMailer
 {
     public static function sendMail()
     {
-        // Not implemented yet
+        \JLog::add("Going to send an email", \JLog::DEBUG, EXTENSION_IDENTIFIER);
+        // Not implemented yet!
+        \JLog::add("Sorry, mailer is not implemented yet", \JLog::ERROR, EXTENSION_IDENTIFIER);
     }
 }
