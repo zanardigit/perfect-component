@@ -16,6 +16,46 @@ defined('_JEXEC') or die('Restricted access');
  */
 class HelloWorldTableMessage extends \JTable
 {
+    /**
+     * Unique identifier
+     *
+     * @var integer
+     */
+    public $id;
+
+    /**
+     * Related asset identifier
+     *
+     * @var integer
+     */
+    public $asset_id;
+
+    /**
+     * The actual greeting message
+     *
+     * @var string
+     */
+    public $greeting;
+
+    /**
+     * @var booleean
+     */
+    public $published;
+
+    /**
+     * Containing category id
+     *
+     * @var int
+     */
+    public $catid;
+
+    /**
+     * JSON-formatted gimiscellaneous parameters
+     *
+     * @var string
+     */
+    public $parameters;
+
 	/**
 	 * Constructor
 	 *
