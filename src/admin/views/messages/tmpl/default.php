@@ -16,15 +16,15 @@ $listOrder     = $this->escape($this->filter_order);
 $listDirn      = $this->escape($this->filter_order_Dir);
 ?>
 <div id="j-sidebar-container" class="span2">
-	<?php echo \JHtmlSidebar::render(); ?>
+	<?=  \JHtmlSidebar::render(); ?>
 </div>
 <div id="j-main-container" class="span10">
 <form action="index.php?option=<?= EXTENSION_ELEMENT ?>&view=helloworlds" method="post" id="adminForm" name="adminForm">
 	<div class="row-fluid">
 		<div class="span6">
-			<?php echo \JText::_('COM_HELLOWORLD_MESSAGES_FILTER'); ?>
-			<?php
-				echo \JLayoutHelper::render(
+			<?= \JText::_('COM_HELLOWORLD_MESSAGES_FILTER'); ?>
+			<?=
+				\JLayoutHelper::render(
 					'joomla.searchtools.default',
 					array('view' => $this)
 				);
@@ -34,25 +34,25 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
-			<th width="1%"><?php echo \JText::_('COM_HELLOWORLD_NUM'); ?></th>
+			<th width="1%"><?=  \JText::_('COM_HELLOWORLD_NUM'); ?></th>
 			<th width="2%">
-				<?php echo \JHtml::_('grid.checkall'); ?>
+				<?=  \JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="90%">
-				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_MESSAGES_NAME', 'greeting', $listDirn, $listOrder); ?>
+				<?=  \JHtml::_('grid.sort', 'COM_HELLOWORLD_MESSAGES_NAME', 'greeting', $listDirn, $listOrder); ?>
 			</th>
 			<th width="5%">
-				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_PUBLISHED', 'published', $listDirn, $listOrder); ?>
+				<?=  \JHtml::_('grid.sort', 'COM_HELLOWORLD_PUBLISHED', 'published', $listDirn, $listOrder); ?>
 			</th>
 			<th width="2%">
-				<?php echo \JHtml::_('grid.sort', 'COM_HELLOWORLD_ID', 'id', $listDirn, $listOrder); ?>
+				<?=  \JHtml::_('grid.sort', 'COM_HELLOWORLD_ID', 'id', $listDirn, $listOrder); ?>
 			</th>
 		</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				<td colspan="5">
-					<?php echo $this->pagination->getListFooter(); ?>
+					<?=  $this->pagination->getListFooter(); ?>
 				</td>
 			</tr>
 		</tfoot>
@@ -62,20 +62,20 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 					$link = \JRoute::_('index.php?option=' . EXTENSION_ELEMENT . '&task=message.edit&id=' . $row->id);
 				?>
 					<tr>
-						<td><?php echo $this->pagination->getRowOffset($i); ?></td>
+						<td><?=  $this->pagination->getRowOffset($i); ?></td>
 						<td>
-							<?php echo \JHtml::_('grid.id', $i, $row->id); ?>
+							<?=  \JHtml::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<a href="<?php echo $link; ?>" title="<?php echo \JText::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
-								<?php echo $row->greeting; ?>
+							<a href="<?=  $link; ?>" title="<?=  \JText::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
+								<?=  $row->greeting; ?>
 							</a>
 						</td>
 						<td align="center">
-							<?php echo \JHtml::_('jgrid.published', $row->published, $i, 'messages.', true, 'cb'); ?>
+							<?=  \JHtml::_('jgrid.published', $row->published, $i, 'messages.', true, 'cb'); ?>
 						</td>
 						<td align="center">
-							<?php echo $row->id; ?>
+							<?=  $row->id; ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -84,8 +84,8 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 	</table>
 	<input type="hidden" name="task" value=""/>
 	<input type="hidden" name="boxchecked" value="0"/>
-	<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
-	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
-	<?php echo \JHtml::_('form.token'); ?>
+	<input type="hidden" name="filter_order" value="<?=  $listOrder; ?>"/>
+	<input type="hidden" name="filter_order_Dir" value="<?=  $listDirn; ?>"/>
+	<?=  \JHtml::_('form.token'); ?>
 </form>
 </div>
