@@ -40,7 +40,7 @@ class HelloWorldViewMessages extends \JViewLegacy
 		$this->activeFilters 	= $this->get('ActiveFilters');
 
 		// What Access Permissions does this user have? What can (s)he do?
-		$this->canDo = HelloWorldHelper::getActions();
+		$this->canDo = HelloWorldHelperBase::getActions();
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -49,7 +49,7 @@ class HelloWorldViewMessages extends \JViewLegacy
 		}
 
 		// Set the submenu
-		HelloWorldHelper::addSubmenu('messages');
+		HelloWorldHelperBase::addSubmenu('messages');
 
 		// Set the toolbar and number of found items
 		$this->addToolBar();

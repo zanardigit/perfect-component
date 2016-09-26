@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since   1.6
  */
-abstract class HelloWorldHelper
+abstract class HelloWorldHelperBase
 {
 	/**
 	 * Configure the Linkbar. This is used by com_categories so we cannot use our constant

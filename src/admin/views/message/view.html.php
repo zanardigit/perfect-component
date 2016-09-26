@@ -37,7 +37,7 @@ class HelloWorldViewMessage extends \JViewLegacy
 		$this->script = $this->get('Script');
 
 		// What Access Permissions does this user have? What can (s)he do?
-		$this->canDo = HelloWorldHelper::getActions($this->item->id);
+		$this->canDo = HelloWorldHelperBase::getActions($this->item->id);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

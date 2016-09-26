@@ -12,6 +12,10 @@ defined('_JEXEC') or die('Restricted access');
 
 // This makes all the rest of the code much more reusable
 define('EXTENSION_ELEMENT', 'com_helloworld');
+define('EXTENSION_IDENTIFIER', 'helloworld');
+
+// From now on, you don't usually have to require class files
+require_once __DIR__ . '/autoloader.php';
 
 // Set some global property
 $document = \JFactory::getDocument();
@@ -23,8 +27,8 @@ if (!\JFactory::getUser()->authorise('core.manage', EXTENSION_ELEMENT))
     throw new \Exception(\JText::_('JERROR_ALERTNOAUTHOR'), 404);
 }
 
-// require helper file
-\JLoader::register('HelloWorldHelper', JPATH_COMPONENT . '/helpers/helloworld.php');
+// Send a test email
+HelloWorldHelperMailer::sendMail();
 
 // Get an instance of the controller prefixed by HelloWorld
 $controller = \JControllerLegacy::getInstance('HelloWorld');
