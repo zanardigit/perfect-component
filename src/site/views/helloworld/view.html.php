@@ -17,6 +17,8 @@ defined('_JEXEC') or die('Restricted access');
  */
 class HelloWorldViewHelloWorld extends \JViewLegacy
 {
+    public $item;
+
 	/**
 	 * Display the Hello World view
 	 *
@@ -24,10 +26,17 @@ class HelloWorldViewHelloWorld extends \JViewLegacy
 	 *
 	 * @return  void
 	 */
-	function display($tpl = null)
+	public function display($tpl = null)
 	{
 		// Assign data to the view
 		$this->item = $this->get('Item');
+
+        JPluginHelper::importPlugin('helloworld');
+        $dispatcher = \JEventDispatcher::getInstance();
+        $results = $dispatcher->trigger('onHelloworldMessageBeforeDisplay', array($this->item));
+        if (count(array_filter($results)) != count($results)) {
+            return false;
+        }
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
